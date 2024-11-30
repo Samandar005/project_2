@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Management</title>
+</head>
+<body>
+    <h1>Students Management</h1>
+
+    <form method="get">
+        <label for="student_name">Create New student</label>
+        <input type="text" id="student_name" name="student_name" placeholder="Student Name" required>
+
+        <label for="ingredients">Ingredients</label>
+        <textarea id="ingredients" name="ingredients" placeholder="Ingredients" required></textarea>
+
+        <label for="price">Price</label>
+        <input type="number" id="price" name="price" step="0.01" placeholder="Price" required>
+
+        <label for="type">Type</label>
+        <select id="type" name="type" required>
+            <option value="Appetizer">Appetizer</option>
+            <option value="Main Course">Main Course</option>
+            <option value="Dessert">Dessert</option>
+        </select>
+
+        <input type="text" id="cuisine" name="cuisine" placeholder="Cuisine" required>
+
+        <button type="submit">Create student</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>student</th>
+                <th>Ingredients</th>
+                <th>Price</th>
+                <th>Type</th>
+                <th>Cuisine</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.student_name }}</td>
+                <td>{{ student.ingredients }}</td>
+                <td>{{ student.price }}</td>
+                <td>{{ student.type }}</td>
+                <td>{{ student.cuisine }}</td>
+            </tr>
+                {% empty %}
+            <tr>
+                <td colspan="5">No Students added yet.</td>
+            </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
