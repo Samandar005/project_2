@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        input[type="text"], input[type="date"], input[type="number"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .form-container label {
+            font-weight: bold;
+        }
+        .form-container input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form-container input[type="button"]:hover {
+            background-color: #45a049;
+        }
+
+
+        .form-container .line {
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: #000;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+
+        .form-container input[type="text"],
+        .form-container textarea,
+        .form-container input[type="date"],
+        .form-container input[type="number"] {
+            margin-bottom: 15px;
+        }
+
+
+        h2 {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Course Management</h1>
+
+    <div class="form-container">
+        <h2>Create New Course</h2>
+        <div class="line"></div>
+        <form method="get">
+                {% csrf_token %}
+
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="descriotion">Description:</label>
+            <textarea id="descriotion" name="descriotion" rows="4" required></textarea>
+
+            <label for="start_data">Start Date:</label>
+            <input type="date" id="start_data" name="start_data" required>
+
+            <label for="end_data">End Date:</label>
+            <input type="date" id="end_data" name="end_data" required>
+
+            <label for="max_students">Max Students:</label>
+            <input type="number" id="max_students" name="max_students" required>
+
+ <button type="submit">Add Courses</button>
+    </form>
+
+    <h2>List of Courses</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Start_date</th>
+                <th>End_date</th>
+                <th>Max_students</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+            <tr>
+                <td>{{ course.id }}</td>
+                <td>{{ course.title }}</td>
+                <td>{{ course.descriotion }}</td>
+                <td>{{ course.start_data }}</td>
+                <td>{{ course.end_data }}</td>
+                <td>{{ course.max_students }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No courses added yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
