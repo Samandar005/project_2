@@ -11,7 +11,6 @@
             background-color: #f9f9f9;
         }
         h1 {
-            text-align: center;
             color: #333;
         }
         form {
@@ -26,7 +25,7 @@
             margin: 10px 0 5px;
         }
         input, select {
-            width: 100%;
+            width: 300px;
             padding: 10px;
             margin: 5px 0 15px;
             border: 1px solid #ccc;
@@ -34,6 +33,9 @@
         }
         button:hover {
             background-color: #4cae4c;
+        }
+        button {
+            margin-top: 20px;
         }
         table {
             width: 100%;
@@ -50,29 +52,45 @@
         th {
             background-color: #f2f2f2;
         }
+        input[type="date"] {
+            font-size: 16px;
+            padding: 5px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            display: block
+        }
+
     </style>
 </head>
 <body>
     <h1>Students Management</h1>
 
     <form method="get">
-        <label for="student_name">Create New student</label>
-        <input type="text" id="student_name" name="student_name" placeholder="Student Name" required>
+        <label for="student_name">First Hame:</label>
+        <input type="text" id="student_name" name="student_name" placeholder="First Hame" required>
 
-        <label for="ingredients">Ingredients</label>
-        <textarea id="ingredients" name="ingredients" placeholder="Ingredients" required></textarea>
+        <label for="studentt_name">Last Hame:</label>
+        <input type="text" id="studentt_name" name="studentt_name" placeholder="Last Hame" required>
 
-        <label for="price">Price</label>
-        <input type="number" id="price" name="price" step="0.01" placeholder="Price" required>
+        <label for="Email">Email:</label>
+        <input type="text" id="Email" name="Email" placeholder="Email" required>
 
-        <label for="type">Type</label>
-        <select id="type" name="type" required>
-            <option value="Appetizer">Appetizer</option>
-            <option value="Main Course">Main Course</option>
-            <option value="Dessert">Dessert</option>
-        </select>
+        <div>
+        <label for="deadline" style="display: block; margin-bottom: 5px;">Muddati:</label>
+        <input type="date" id="deadline" style="margin-top: 5px;">
+        </div>
 
-        <input type="text" id="cuisine" name="cuisine" placeholder="Cuisine" required>
+        <div>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <label for="Address">Address:</label>
+        <textarea id="Address" name="Address" placeholder="Address" required></textarea><br>
 
         <button type="submit">Create student</button>
     </form>
