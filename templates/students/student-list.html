@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+
+    <style>
+        .continer {
+            width: 70%;
+            margin: auto;
+        }
+        .matn th{
+            border: 1px solid black;
+
+        }
+        .matn1 td {
+            border: 1px solid black;
+        }
+        .input ,input ,textarea{
+            width: 100%;
+            margin-top: 10px;
+
+        }
+
+
+    </style>
+</head>
+
+
+<body>
+    <div class="continer">
+        <h1 style="text-align: center;">Student Management</h1>
+        <form class="input">
+            <fieldset>
+
+                <legend style="text-align: center;">Creat New Student</legend>
+
+                <label for="first_name">First Name:
+                <input type="text" name="first_name" id="first_name">
+                </label><br><br>
+
+
+                <label for="last_name">Last Name:
+                    <input type="text" name="last_name" id="last_name">
+                </label><br><br>
+
+
+                <label for="email">Email:
+                    <input type="text" name="email" id="email">
+                </label><br><br>
+
+
+                <label for="date">Date of Birth:
+                    <input type="date" name="date" id="date">
+                </label><br><br>
+
+                <label>Address:
+                    <textarea name="address" id="address"></textarea>
+                </label><br><br>
+
+                <label for="gender">Gender:
+                    <select name="gender" id="gender">
+
+                        <option value="sel">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="femal">Female</option>
+
+                    </select>
+                </label><br><br>
+
+
+                <input class="tugma" type="submit" value="Creat Student" style="padding: 10px; cursor: pointer; ">
+
+            </fieldset>
+
+        </form>
+
+
+        <h3 class="h3"> Students List</h3>
+        <table style="border: 1px solid black;">
+
+            <thead class="matn">
+
+                <tr class="matn">
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Date of Birth</th>
+                    <th>Address</th>
+                    <th>Gender</th>
+
+                </tr>
+            </thead>
+
+            <tbody class="matn1">
+                {% for post in students %}
+                <tr>
+                    <td>{{ post.first_name }}</td>
+                    <td>{{ post.last_name }}</td>
+                    <td>{{ post.email }}</td>
+                    <td>{{ post.date }}</td>
+                    <td>{{ post.address }}</td>
+                    <td>{{ post.gender }}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>
